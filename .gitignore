@@ -1,0 +1,80 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you actually want to
+# keep. However, some settings are middle-ground, and some targets are best left
+# out of source control.
+.vscode/bin/
+.vscode/appRoot/
+.vscode/obj/
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/dist/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/App.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.[mh]
+**/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+**/android/key.properties
+**/android/local.properties
+**/android/app/google-services.json
+**/linux/flutter/generated_plugin_registrant.cc
+**/linux/flutter/generated_plugin_registrant.h
+**/macos/Flutter/ephemeral/
+**/windows/flutter/generated_plugin_registrant.cc
+**/windows/flutter/generated_plugin_registrant.h
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place separate folders for each type of image asset
+**/android/app/src/main/res/drawable-hdpi/
+**/android/app/src/main/res/drawable-mdpi/
+**/android/app/src/main/res/drawable-xhdpi/
+**/android/app/src/main/res/drawable-xxhdpi/
+**/android/app/src/main/res/drawable-xxxhdpi/
+**/android/app/src/main/res/mipmap-hdpi/
+**/android/app/src/main/res/mipmap-mdpi/
+**/android/app/src/main/res/mipmap-xhdpi/
+**/android/app/src/main/res/mipmap-xxhdpi/
+**/android/app/src/main/res/mipmap-xxxhdpi/
+
+# Exceptions to above rules
+!**/ios/Runner/AppDelegate.swift
+!**/ios/Runner/Info.plist
+
+# FVM Version Cache
+.fvm/
