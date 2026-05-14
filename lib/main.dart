@@ -17,8 +17,8 @@ class OCRScannerApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFF121212),
-        cardTheme: CardThemeData(
-          color: const Color(0xFF1E1E1E),
+        cardTheme: const CardThemeData(
+          color: Color(0xFF1E1E1E),
          ),
       ),
       home: const HomeScreen(),
