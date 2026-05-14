@@ -1,49 +1,88 @@
-# OCR Scanner App - Flutter
+# OCR Scanner App - Technical Assignment
 
-A mobile application built with Flutter that scans and extracts structured data from physical cards (credit/debit) and bank passbooks using Google ML Kit and manual parsing logic.
+A specialized Flutter mobile application designed to scan and extract structured data from physical credit/debit cards and bank passbooks. This project focuses on **manual parsing algorithms** and **Luhn validation**.
+
+---
 
 ## 🚀 Steps to Run the Project
 
-1.  **Generate Platform Folders:**
-    Since this repository contains the core logic and UI, you need to generate the platform folders (Android/iOS) if they are missing:
-    ```bash
-    flutter create .
-    ```
-2.  **Install dependencies:**
-    ```bash
-    flutter pub get
-    ```
-3.  **Run the app:**
-    *   Connect a physical device (Camera is required for real-time scanning).
-    *   Run: `flutter run`
+Based on the current project configuration, follow these steps to run the application:
 
-## 🤖 Android Configuration
+### 1. Prerequisites
+- **Flutter Version:** `3.41.7` (Recommended)
+- **FVM (Optional):** If you are using FVM, prefix the commands with `fvm`.
 
-Ensure the following in `android/app/build.gradle`:
-- `minSdkVersion` 21
-- `targetSdkVersion` 33
+### 2. Environment Setup
+Install the specific Flutter version if using FVM:
+```bash
+fvm install 3.41.7
+fvm use 3.41.7
+```
+
+### 3. Install Dependencies
+Run the following command to fetch all required libraries:
+```bash
+flutter pub get
+```
+
+### 4. Android Configuration
+This project uses **Google ML Kit**, which requires a minimum Android SDK version of **21**.
+Ensure your `android/app/build.gradle` reflects this:
+```gradle
+defaultConfig {
+    minSdk = 21
+    targetSdk = 33 // or latest
+}
+```
+
+### 5. Run the Application
+Connect a **physical device** (required for camera and OCR functionality). Simulators are not recommended for real-time scanning.
+```bash
+flutter run
+```
+
+---
 
 ## 📚 Libraries Used
 
-- **`google_mlkit_text_recognition`**: Used for raw text extraction (OCR).
-- **`camera`**: For real-time camera feed and capturing images.
-- **`image_picker`**: For picking passbook images from the gallery.
-- **`path_provider`**: For managing temporary image files.
+| Library | Version | Purpose |
+| :--- | :--- | :--- |
+| `google_mlkit_text_recognition` | `^0.11.0` | Raw text extraction (OCR). |
+| `camera` | `^0.10.5` | Real-time camera feed and capture. |
+| `image_picker` | `^1.0.4` | Gallery upload for documents. |
+| `path_provider` | `^2.1.1` | Local file management. |
+| `flutter_test` | SDK | Unit testing for algorithms. |
+
+---
 
 ## 🧠 Assumptions Made
 
-1.  **Card Layout:** Standard ISO/IEC 7810 ID-1 card layouts.
-2.  **Language:** English and numeric standard.
-3.  **IFSC Pattern:** 11 characters (4 letters, '0', 6 alphanumeric).
+1.  **Card Standard:** Standard ISO/IEC 7810 ID-1 card layouts.
+2.  **Date Formats:** Expiry dates follow `MM/YY`, `MM-YY`, or `MMYY`.
+3.  **IFSC Format:** 11-character Indian banking format (`AAAA0BBBBBB`).
+4.  **Name Placement:** Cardholder names are in **ALL CAPS**.
 
-## 🛠 What Was Skipped and Why
+---
 
-1.  **Complex Card Brands Detection:** Simplified to 13-19 digits to focus on manual Luhn validation.
-2.  **Real-time Bounding Boxes:** Focused on parsing accuracy and structured data display.
+## 🛠 Edge Cases Handled
+
+- **Blurry/Partial Scans:** RegEx-based filtering to extract segments from noisy text.
+- **OCR Misreads:** Manual character correction (`O` → `0`, `I` → `1`) in `CardParser`.
+- **Multiple Numbers:** Luhn validation used to distinguish card numbers from other numeric sequences.
+- **Missing Fields:** Graceful UI handling with "Not Found" status.
+
+---
+
+## 🚧 What Was Skipped and Why
+
+1.  **Duplicate Scan Prevention:** Skipped to allow users to retry scans immediately.
+2.  **Real-time Bounding Boxes:** Prioritized **Parsing Logic (40%)** as per evaluation criteria.
+
+---
 
 ## 🧪 Testing
 
-Run tests using:
+Run unit tests to verify the core algorithms:
 ```bash
 flutter test
 ```
